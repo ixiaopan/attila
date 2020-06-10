@@ -26,7 +26,9 @@
     "% min read": "% min read",
     "Article": "文章",
     "Author": "作者",
-    "Topic": "主题",
+    "Topic": "标签",
     "Share": "分享",
-    "Search": "搜索"
+    "Search": "搜索",
+    "Next post": "下一篇",
+    "Previous post": "上一篇"
 }
