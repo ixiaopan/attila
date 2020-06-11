@@ -9,33 +9,12 @@ module.exports = function(grunt) {
     config: {
       'cssSrcDir': 'src/sass',
       'cssTargetDir': 'assets/css',
+
       'jsSrcDir': 'src/js',
       'jsTargetDir': 'assets/js',
       'jsDependencies': [
-        '<%= config.jsSrcDir %>/libs/jquery.fitvids.js',
-        '<%= config.jsSrcDir %>/libs/jquery.history.js',
-        '<%= config.jsSrcDir %>/libs/highlight.pack.js',
-        '<%= config.jsSrcDir %>/libs/nprogress.js',
-        'node_modules/ghosthunter/dist/jquery.ghosthunter.js'
+        '<%= config.jsSrcDir %>/libs/prism.js'
       ]
-    },
-    copy: {
-      dev: {
-        files: [{
-          dest: 'assets/font/',
-          src: '*',
-          cwd: 'src/font/',
-          expand: true
-        }]
-      },
-      dist: {
-        files: [{
-          dest: 'assets/font/',
-          src: '*',
-          cwd: 'src/font/',
-          expand: true
-        }]
-      }
     },
     clean: {
       dev: ['dev'],
@@ -72,25 +51,25 @@ module.exports = function(grunt) {
         src: '<%=  config.cssTargetDir %>/*.css'
       }
     },
-    uglify: {
-      js: {
-        files: {
-          '<%= config.jsTargetDir %>/script.js': [
-            '<%= config.jsDependencies %>',
-            '<%= config.jsSrcDir %>/script.js'
-          ]
-        }
-      }
-    },
+    // uglify: {
+    //   js: {
+    //     files: {
+    //       '<%= config.jsTargetDir %>/script.js': [
+    //         '<%= config.jsDependencies %>',
+    //         '<%= config.jsSrcDir %>/script.js'
+    //       ]
+    //     }
+    //   }
+    // },
     watch: {
       css: {
         files: '<%=  config.cssSrcDir %>/**/*.scss',
-        tasks: ['sass:dev', 'copy:dev', 'postcss:dev']
+        tasks: ['sass:dev', 'postcss:dev']
       },
-      js: {
-        files: '<%=  config.jsSrcDir %>/**/*.js',
-        tasks: ['uglify']
-      }
+      // js: {
+      //   files: '<%=  config.jsSrcDir %>/**/*.js',
+      //   tasks: ['uglify']
+      // }
     },
     compress: {
       main: {
@@ -121,14 +100,13 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'sass:dist',
     'postcss:dist',
-    'copy:dist',
-    'uglify'
+    // 'uglify'
   ]);
+
   grunt.registerTask('default', [
     'sass:dev',
     'postcss:dev',
-    'copy:dev',
-    'uglify',
+    // 'uglify',
     'watch'
   ]);
 };

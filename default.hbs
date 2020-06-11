@@ -10,12 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
-
     {{ghost_head}}
   </head>
 
   <body class="{{body_class}}">
-
     {{!-- SVG Sprite --}}
     <svg width="0" height="0" class="hidden">
       <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="twitter">
@@ -52,37 +50,32 @@
     </svg>
 
     <header class="nav-header">
-      <nav class="nav-wrapper inner" aria-label="{{t "Main"}}">
-        {{navigation}}
-      </nav>
+      <div class="inner">
+        {{#if @site.logo}}
+        <div class="site-logo">
+          <a href="{{@site.url}}" title="{{t "Home"}}">
+            <img src="{{@site.logo}}" alt="{{t "Logo"}}" />
+          </a>
 
-      <div class="nav-wrapper-control">
-        <div class="inner">
-          <a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>{{t "Menu"}}</a>
+          <p class="site-author-name">Xiaopan Wu</p>
         </div>
+        {{/if}}
+        
+        <nav aria-label="{{t "Main"}}">
+          {{navigation}}
+        </nav>
       </div>
     </header>
-    <div class="nav-close" role="button" aria-label="{{t "Close"}}"></div>
 
     <section class="page-wrapper">
       {{{body}}}
     </section>
 
     <footer class="nav-footer" aria-label="{{t "Footer"}}">
-      {{#if @site.logo}}
-      <div class="nav-footer-logo">
-        <a href="{{@site.url}}" title="{{t "Home"}}">
-          <img src="{{@site.logo}}" alt="{{t "Logo"}}" />
-        </a>
-
-        <p class="nav-footer-author-name">Xiaopan Wu</p>
-      </div>
-      {{/if}}
-
       <ul class="nav-footer-nav">
         {{#if @site.twitter}}
-        <li class="nav-footer-nav-item" title="{{@site.twitter}}">
-          <a href="{{twitter_url}}" target="_blank">
+        <li>
+          <a href="{{twitter_url}}" title="{{@site.twitter}}" class="nav-footer-nav-item" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#twitter"></use>
             </svg>
@@ -91,8 +84,8 @@
         {{/if}}
 
         {{#if @site.facebook}}
-        <li class="nav-footer-nav-item" title="{{@site.facebook}}">
-          <a href="{{facebook_url}}"  target="_blank">
+        <li>
+          <a href="{{facebook_url}}" title="{{@site.facebook}}" class="nav-footer-nav-item" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#facebook"></use>
             </svg>
@@ -101,8 +94,8 @@
         {{/if}}
 
         {{!-- 微博 --}}
-        <li class="nav-footer-nav-item" title="SinaWeibo">
-          <a title="SinaWeibo" href="https://weibo.com/u/2144043071" target="_blank">
+        <li>
+          <a title="SinaWeibo" class="nav-footer-nav-item" href="https://weibo.com/u/2144043071" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#sinaweibo"></use>
             </svg>
@@ -110,8 +103,8 @@
         </li>
 
         {{!-- Github --}}
-        <li class="nav-footer-nav-item" title="Github">
-          <a href="https://github.com/ixiaopan" target="_blank">
+        <li>
+          <a href="https://github.com/ixiaopan"  title="Github" class="nav-footer-nav-item" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#github"></use>
             </svg>
@@ -119,8 +112,8 @@
         </li>
 
         {{!-- 优酷 --}}
-        <li class="nav-footer-nav-item " title="Youku">
-          <a href="http://i.youku.com/i/UMjkxNjgzMjk5Ng==" target="_blank">
+        <li>
+          <a href="http://i.youku.com/i/UMjkxNjgzMjk5Ng==" title="Youku" class="nav-footer-nav-item" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#youku"></use>
             </svg>
@@ -128,8 +121,8 @@
         </li>
 
         {{!-- 邮箱 --}}
-        <li class="nav-footer-nav-item" title="Email">
-          <a href="mailto:?to=wxp201013@163.com" target="_blank">
+        <li>
+          <a href="mailto:?to=wxp201013@163.com" title="Email" class="nav-footer-nav-item" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#mail"></use>
             </svg>
@@ -137,8 +130,8 @@
         </li>
 
         {{!-- RSS --}}
-        <li class="nav-footer-nav-item nav-footer-nav-rss" title="RSS">
-          <a href="{{@site.url}}/rss/" target="_blank">
+        <li>
+          <a href="{{@site.url}}/rss/" title="RSS"  class="nav-footer-nav-item nav-footer-nav-rss" target="_blank">
             <svg class="symbol-icon" aria-hidden="true">
               <use xlink:href="#rss"></use>
             </svg>
@@ -153,21 +146,10 @@
 
         <a href="http://www.beian.miit.gov.cn/" target="_blank"> | 皖ICP备20009847号</a>
       </div>
-
-      <div class="nav-footer-pv">
-        <span id="busuanzi_container_site_pv">
-          {{t "Viewed"}}  <span id="busuanzi_value_site_pv"></span>
-        </span>
-        |
-        <span id="busuanzi_container_site_uv">
-          {{t "Vistors"}}  <span id="busuanzi_value_site_uv"></span>
-        </span>
-      </div>
     </footer>
 
     {{!-- Load basic scripts --}}
     <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="{{asset "js/script.js"}}"></script>
 
     {{!-- Load scripts from other template files --}}
     {{{block "scripts"}}}

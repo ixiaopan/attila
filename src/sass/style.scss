@@ -3,8 +3,6 @@
    ========================================================================== */
 @import "normalize";
 @import "colors";
-@import "icons";
-@import "fonts";
 @import "highlight";
 $breakpoint-large: 960px;
 $breakpoint-medium: 640px;
@@ -402,7 +400,6 @@ textarea {
 
 .page-wrapper {
 	min-height: 60vh;
-  padding-top: 8rem;
   box-sizing: border-box;
 }
 
@@ -410,14 +407,15 @@ textarea {
 	max-width: $inner;
 	margin: 0 auto;
 	padding: 0 8rem;
-	@media only screen and (max-width: $breakpoint-medium) {
+
+  @media only screen and (max-width: $breakpoint-medium) {
 		padding: 0 4rem;
 	}
 }
 
 .symbol-icon {
-  width: 1em;
-  height: 1em;
+  width: 1rem;
+  height: 1rem;
   fill: #fff;
 }
 
@@ -679,324 +677,55 @@ textarea {
 }
 
 /* ==========================================================================
-   Search
-   ========================================================================== */
-#search {
-	position: fixed;
-	z-index: 500;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow-y: scroll;
-	background: $color-background;
-	display: none;
-	@media (prefers-color-scheme: dark) {
-		background: $color-background-dark;
-	}
-	@media only screen and (max-width: $breakpoint-medium) {
-		display: block;
-		transition: all ease-out 0.3s;
-		transform: translate3d(0,100%,0);
-		border-top: 1px solid $color-border;
-		@media (prefers-color-scheme: dark) {
-			border-color: $color-border-dark;
-		}
-	}
-
-	#results {
-		padding-bottom: calc(12rem + 8vw);
-	}
-}
-
-.search-active {
-	overflow-y: hidden;
-
-	#search {
-		display: block;
-		@media only screen and (max-width: $breakpoint-medium) {
-			transform: translate3d(0,0,0);
-		}
-	}
-}
-
-.search {
-	padding: 2rem 0;
-	display: flex;
-
-	input[type="text"] {
-		font-size: 2em;
-		width: 100%;
-		height: 5rem;
-		margin: -0.5rem 0;
-		padding: 0 2rem;
-		border-radius: 5rem;
-		border: 1px solid $color-border;
-		background: $color-background;
-		box-sizing: border-box;
-		box-shadow: none !important;
-		outline: 0 !important;
-		@media (prefers-color-scheme: dark) {
-			border-color: $color-border-dark;
-			background: $color-background-dark;
-		}
-
-		&:focus,
-		&:hover {
-			border-color: $color-primary-active;
-		}
-	}
-
-	input[type="submit"] {
-		appeareance: none;
-		background: none;
-		border: 0;
-		display: none;
-	}
-}
-
-.search-close {
-	position: fixed;
-	z-index: 600;
-	top: 0;
-	right: 0;
-	width: 4rem;
-	height: 4rem;
-	margin: 2rem;
-	border: 1px solid $color-neutral-80;
-	border-radius: 4rem;
-	box-sizing: border-box;
-	cursor: pointer;
-	transition: all ease-out 0.1s;
-	@media (prefers-color-scheme: dark) {
-		border-color: $color-neutral-60;
-	}
-
-	&:after,
-	&:before {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 20%;
-		width: 60%;
-		height: 2px;
-		margin-top: -1px;
-		border-radius: 2px;
-		background: $color-neutral-60;
-		transition: all ease-out 0.1s;
-		@media (prefers-color-scheme: dark) {
-			background: $color-neutral-80;
-		}
-	}
-
-	&:after {
-		transform: rotate(45deg);
-	}
-
-	&:before {
-		transform: rotate(-45deg);
-	}
-
-	&:focus,
-	&:hover {
-		border-color: $color-primary-active;
-
-		&:after,
-		&:before {
-			background: $color-primary-active;
-		}
-	}
-}
-/* ==========================================================================
    Navigation
    ========================================================================== */
-.nav-header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 400;
-	transition: all ease-out 0.3s;
-	@media only screen and (max-width: $breakpoint-medium) {
-		transform: translate3d(0,-100%,0);
-	}
-}
+.site-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
 
-.menu-active .nav-header {
-	transform: translate3d(0,0,0);
-}
+  img {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
 
-.nav-close {
-	position: fixed;
-	z-index: 350;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	opacity: 0.2;
-	display: none;
-	@media (prefers-color-scheme: dark) {
-		opacity: 0.4;
-	}
-}
+  .site-author-name {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 300;
+    color: #000;
+    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
 
-.menu-active .nav-close {
-	@media only screen and (max-width: $breakpoint-medium) {
-		display: block;
-	}
-}
-
-.nav-header .nav-wrapper-control {
-	position: absolute;
-	z-index: 500;
-	left: 0;
-	top: 100%;
-	width: 100%;
-	cursor: pointer;
-	display: none;
-	color: $color-text-secondary;
-	border-top: 1px solid transparent;
-	box-sizing: border-box;
-	transition: all linear 0.1s;
-	@media (prefers-color-scheme: dark) {
-		color: $color-text-secondary-dark;
-	}
-	@media only screen and (max-width: $breakpoint-medium) {
-		display: block;
-	}
-
-	.inner {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	a {
-		position: relative;
-		display: block;
-		width: 100%;
-		padding: 2rem 0;
-		font-size: 2em;
-		line-height: 2rem;
-		color: inherit;
-		transition: all ease-out 0.1s;
-
-		i {
-			display: inline-block;
-			width: 4rem;
-		}
-
-		&.nav-search {
-			width: auto;
-			text-align: right;
-		}
-
-		&:focus,
-		&:hover {
-			color: $color-text-primary;
-			@media (prefers-color-scheme: dark) {
-				color: $color-text-primary-dark;
-			}
-		}
-	}
-}
-
-.cover-active .nav-header .nav-wrapper-control {
-	color: #FFF;
-}
-
-.menu-active .nav-header .nav-wrapper-control {
-	background: $color-neutral-15;
-	color: $color-text-secondary;
-	border-color: $color-border-dark;
-	@supports (-webkit-backdrop-filter: blur(2rem)) {
-		background: rgba(34,36,38,0.9);
-		-webkit-backdrop-filter: blur(2rem);
-	}
-
-	a {
-		&:focus,
-		&:hover {
-			color: $color-text-primary-dark;
-		}
-	}
-}
-
-.nav-header .nav-wrapper {
-	display: flex;
-  max-width: calc(64rem + 8vw);
-  margin: 0 auto;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-
-	@media only screen and (max-width: $breakpoint-medium) {
-		background: $color-neutral-15;
-    flex-direction: column;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    @supports (-webkit-backdrop-filter: blur(2rem)) {
-			background: rgba(34,36,38,0.9);
-			-webkit-backdrop-filter: blur(2rem);
-		}
-	}
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
+  }
 }
 
 .nav-header ul {
-	position: relative;
-	display: flex;
-
-  width: 100%;
+  display: flex;
+  justify-content: center;
 	padding: 0;
 	margin: auto;
-
   list-style: none;
-
-  @media only screen and (max-width: $breakpoint-medium) {
-		flex-direction: column;
-		flex-shrink: 0;
-		padding: 2rem 0;
-	}
 }
 
 .nav-header li {
-	position: relative;
 	margin-right: 3rem;
 
 	&.active {
-		a:before {
-      display: none;
-      content: '';
-      position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 3px;
-			padding: 0 1rem;
-			margin-left: -1rem;
-			margin-top: -2rem;
-      background: $color-primary;
-			@media only screen and (max-width: $breakpoint-medium) {
-        display: block;
-				left: 0;
-				top: 50%;
-				width: 1.5rem;
-				height: 2px;
-				margin-left: 6px;
-				margin-top: -1px;
-				border-radius: 2px;
-				padding: 0;
-			}
-		}
-
 		a {
 			color: $color-neutral-25;
 			font-weight: 500;
-			@media (prefers-color-scheme: dark) {
+  
+      @media (prefers-color-scheme: dark) {
 				color: $color-neutral-90;
-			}
-			@media only screen and (max-width: $breakpoint-medium) {
-				color: #FFF;
 			}
 		}
   }
@@ -1004,32 +733,18 @@ textarea {
   a {
 		display: block;
 		padding: 1rem 0;
-		font-size: 1.5em;
+
+    font-size: 1.5em;
 		line-height: 2rem;
+		font-weight: 400;
 		color: $color-neutral-60;
-		white-space: nowrap;
+
+    white-space: nowrap;
 		text-overflow: ellipsis;
 		text-decoration: none;
-		font-weight: 400;
-		cursor: pointer;
-		transition: color linear 0.1s;
-		@media only screen and (max-width: $breakpoint-medium) {
-			font-size: 2em;
-			padding-left: 4rem;
 
-			&:before {
-				content: '';
-				position: absolute;
-				left: 0;
-				top: 50%;
-				width: 1.5rem;
-				height: 2px;
-				margin-left: 6px;
-				margin-top: -1px;
-				border-radius: 2px;
-				background: $color-neutral-25;
-			}
-		}
+    cursor: pointer;
+		transition: color linear 0.1s;
 
 		&:focus,
 		&:hover {
@@ -1037,46 +752,11 @@ textarea {
 			@media (prefers-color-scheme: dark) {
 				color: $color-neutral-90;
 			}
-			@media only screen and (max-width: $breakpoint-medium) {
-				color: $color-neutral-80;
-			}
 		}
 	}
 
 	&:last-child {
 		margin-right: 0;
-	}
-}
-
-.cover-active {
-	.nav-wrapper-control a {
-		color: rgba(255,255,255,0.8);
-
-		&:focus,
-		&:hover {
-			color: #FFF;
-		}
-	}
-
-	.nav-header li {
-		a {
-			@media only screen and (min-width: $breakpoint-medium) {
-				color: rgba(255,255,255,0.8);
-			}
-
-			&:focus,
-			&:hover {
-				@media only screen and (min-width: $breakpoint-medium) {
-					color: #FFF;
-				}
-			}
-		}
-
-		&.active a {
-			@media only screen and (min-width: $breakpoint-medium) {
-				color: #FFF;
-			}
-		}
 	}
 }
 
@@ -1088,42 +768,14 @@ textarea {
   padding-bottom: 4rem;
   text-align: center;
 }
-.nav-footer-logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-  img {
-    display: block;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    border: 2px solid #fff;
-  }
-
-  .nav-footer-author-name {
-    margin-left: 1rem;
-    font-size: 2em;
-    font-weight: 300;
-    color: #fff;
-    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
-  }
-}
 
 .nav-footer-nav {
   list-style: none;
   display: flex;
   justify-content: center;
 
-  margin: 0 0 5rem 0;
+  margin: 0 0 4rem 0;
   padding: 0;
-
-  .symbol-icon {
-    width: 100%;
-    height: 100%;
-    fill: #8c8c8c;
-  }
 
   .nav-footer-nav-item {
     display: flex;
@@ -1132,34 +784,31 @@ textarea {
 
     width: 3rem;
     height: 3rem;
-    margin: 0 1.2rem;
- 
+    margin: 0 1.2rem; 
     border-radius: 50%;
     background-color: #0B0D12;
 
-    cursor: pointer;
+    text-decoration: none;
+    transition: color linear 0.1s;
 
     &:hover .symbol-icon {
       fill: #FFF;
     }
   }
 
-  a {
-		display: block;
-		text-decoration: none;
-    transition: color linear 0.1s;
-    width: 1.6rem;
-    height: 1.6rem;
+  .symbol-icon {
+    width: 50%;
+    height: 50%;
+    fill: #8c8c8c;
   }
 
-  .nav-footer-nav-rss a {
-    width: 1.2rem;
-    height: 1.2rem;
+  .nav-footer-nav-rss .symbol-icon {
+    width: 40%;
+    height: 40%;
   }
 }
 
-.nav-footer-copyrights,
-.nav-footer-pv {
+.nav-footer-copyrights {
 	display: block;
   margin-bottom: 0.4rem;
   width: 100%;
@@ -1183,12 +832,11 @@ textarea {
   }
 }
 
-
 /* ==========================================================================
    Post List
    ========================================================================== */
 .post-list {
-	.post .post-box {
+	.post-box {
 		padding: 2.8rem 0;
 		border-bottom: 1px solid $color-border;
 
@@ -1289,115 +937,31 @@ textarea {
   align-items: center;
 }
 
-.post-info-label {
-	margin-right: 0.75em;
-	font-size: 1.5em;
-	line-height: 3rem;
-	font-weight: 400;
-	color: $color-neutral-60;
-}
-
-.post-share {
-  position: relative;
-  margin-left: auto;
-	display: flex;
-
-  @media only screen and (max-width: $breakpoint-medium) {
-		max-width: none;
-		float: none;
-	}
-}
-
-.post-share a {
-  flex: 0 0 auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
-	width: 3rem;
-	height: 3rem;
-	margin-right: 0.5em;
-	padding: 0;
-	border-radius: 2em;
-
-  font-size: 1.5em;
-	line-height: 3rem;
-	text-align: center;
-	text-decoration: none;
-	color: #FFF;
-
-  cursor: pointer;
-  transition: all ease 0.2s;
-
-  @media only screen and (max-width: $breakpoint-medium) {
-		margin-left: 0;
-		margin-right: 0.66667em;
-	}
-
-	&:focus,
-	&:hover {
-		transform: scale(1.1);
-	}
-}
-
-.post-share a:last-child {
-	margin-right: 0;
-}
-
-.post-share .twitter {
-	background-color: $color-social-twitter;
-}
-
-.post-share .facebook {
-	background-color: $color-social-facebook;
-}
-
-.post-share .linkedin {
-	background-color: $color-social-linkedin;
-}
-
-.post-share .sinaweibo {
-	background-color: $color-social-sinaweibo;
-}
-
-.post-share .wechat {
-	background-color: $color-social-wechat;
-}
-
-.post-share .email {
-	background-color: $color-social-mail;
-}
-
 .post-tags {
 	position: relative;
-	max-width: 60%;
 	display: flex;
 	flex-wrap: wrap;
-	@media only screen and (max-width: 640px) {
-		max-width: none;
-	}
+  
+  a {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0 0.5rem;
+    height: 2rem;
+  
+    font-size: 1em;
+    line-height: 2rem;
+    letter-spacing: .05em;
+    text-align: center;
+    color: #cac3c3;
+    background: #171514;
+  
+    text-decoration: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
 }
 
-.post-tags a {
-	display: inline-block;
-	margin-right: 0.5em;
-	margin-bottom: 0.5em;
-  padding: 0 0.5rem;
-  height: 2rem;
-
-	font-size: 1em;
-  line-height: 2rem;
-  letter-spacing: .05em;
-  text-align: center;
-  color: #cac3c3;
-  background: #171514;
-
-	text-decoration: none;
-	box-sizing: border-box;
-	white-space: nowrap;
-}
 /* ==========================================================================
    Post Comments
    ========================================================================== */
@@ -1502,11 +1066,6 @@ textarea {
 .post-nav i {
 	width: 2rem;
   flex: 0 0 auto;
-  font-size: 1.6rem;
-
-  &:before {
-		margin: 0;
-	}
 }
 .post-nav-title {
 	margin: 0;
@@ -1637,27 +1196,29 @@ textarea {
    Archive
    ========================================================================== */
 .archive-area {
-  padding: 1.5rem 0 1rem 14rem;
+  padding: 2rem 0;
   border-bottom: 1px solid #3e3e3e;
-  overflow: hidden;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   .archive-item-title {
     font-family: monospace;
     font-size: 2rem;
-    margin: 0.6rem 0 0 -14rem;
-    float: left;
+    margin: 0 0 1rem 0;
   }
 
   ul {
-    margin: 0;
     padding: 0;
+    margin: 0 0 0 2rem;
     list-style: none;
     font-size: 1.4rem;
     line-height: 2rem;
   }
 
   .archive-item-post {
-    padding: 4px 0;
+    padding: 0.4rem 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1675,5 +1236,9 @@ textarea {
     font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
     text-decoration: none;
     color: #fff;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
