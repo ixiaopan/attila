@@ -926,12 +926,16 @@ textarea {
 	display: flex;
   max-width: calc(64rem + 8vw);
   margin: 0 auto;
-	padding: 2rem 8rem;
-	overflow-y: auto;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+
 	@media only screen and (max-width: $breakpoint-medium) {
 		background: $color-neutral-15;
-		flex-direction: column;
-		@supports (-webkit-backdrop-filter: blur(2rem)) {
+    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @supports (-webkit-backdrop-filter: blur(2rem)) {
 			background: rgba(34,36,38,0.9);
 			-webkit-backdrop-filter: blur(2rem);
 		}
@@ -947,17 +951,11 @@ textarea {
 	margin: auto;
 
   list-style: none;
+
   @media only screen and (max-width: $breakpoint-medium) {
 		flex-direction: column;
 		flex-shrink: 0;
 		padding: 2rem 0;
-	}
-
-	&:last-child {
-		justify-content: flex-end;
-		@media only screen and (max-width: $breakpoint-medium) {
-			display: none;
-		}
 	}
 }
 
@@ -1092,32 +1090,24 @@ textarea {
 }
 .nav-footer-logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 2rem;
-
   img {
     display: block;
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     border: 2px solid #fff;
   }
 
   .nav-footer-author-name {
-    margin: 20px 0 10px 0;
+    margin-left: 1rem;
     font-size: 2em;
     font-weight: 300;
     color: #fff;
     font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
-  }
-  .nav-footer-job-title {
-    margin: 0;
-    font-size: 1.1em;
-    font-weight: 300;
-    color: #AAAAAA;
   }
 }
 
@@ -1168,8 +1158,10 @@ textarea {
   }
 }
 
-.nav-footer-copyrights {
+.nav-footer-copyrights,
+.nav-footer-pv {
 	display: block;
+  margin-bottom: 0.4rem;
   width: 100%;
 
   color: $color-text-secondary;
@@ -1183,13 +1175,14 @@ textarea {
 
   a {
     color: $color-text-secondary;
-      @media (prefers-color-scheme: dark) {
-        color: #c1bdbd;
-      }
+    @media (prefers-color-scheme: dark) {
+      color: #c1bdbd;
+    }
     text-decoration: none;
     font-weight: 500;
   }
 }
+
 
 /* ==========================================================================
    Post List
@@ -1638,4 +1631,49 @@ textarea {
 			border-color: $color-border-dark;
 		}
 	}
+}
+
+/* ==========================================================================
+   Archive
+   ========================================================================== */
+.archive-area {
+  padding: 1.5rem 0 1rem 14rem;
+  border-bottom: 1px solid #3e3e3e;
+  overflow: hidden;
+
+  .archive-item-title {
+    font-family: monospace;
+    font-size: 2rem;
+    margin: 0.6rem 0 0 -14rem;
+    float: left;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  .archive-item-post {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  time {
+    display: block;
+    margin-right: 1.2rem;
+    font-family: monospace;
+    color: #999;
+  }
+
+  a {
+    display: block;
+    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
+    text-decoration: none;
+    color: #fff;
+  }
 }

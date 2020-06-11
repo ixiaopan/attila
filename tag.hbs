@@ -1,0 +1,12 @@
+{{!< default}}
+
+<div class="inner post-list">
+  <div>
+    <h2 class="tag-title">{{t "Topic"}} - {{tag.name}}</h2>
+    {{#if tag.description}}
+    <span class="tag-description">{{{tag.description}}}</span>
+    {{/if}}
+  </div>
+
+  {{> "loop"}}
+</div>

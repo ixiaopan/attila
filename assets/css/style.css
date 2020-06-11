@@ -1149,12 +1149,14 @@ textarea {
   display: flex;
   max-width: calc(64rem + 8vw);
   margin: 0 auto;
-  padding: 2rem 8rem;
-  overflow-y: auto; }
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
   @media only screen and (max-width: 640px) {
     .nav-header .nav-wrapper {
       background: #222426;
-      flex-direction: column; }
+      flex-direction: column;
+      padding-top: 0;
+      padding-bottom: 0; }
       @supports (-webkit-backdrop-filter: blur(2rem)) {
         .nav-header .nav-wrapper {
           background: rgba(34, 36, 38, 0.9);
@@ -1172,11 +1174,6 @@ textarea {
       flex-direction: column;
       flex-shrink: 0;
       padding: 2rem 0; } }
-  .nav-header ul:last-child {
-    justify-content: flex-end; }
-    @media only screen and (max-width: 640px) {
-      .nav-header ul:last-child {
-        display: none; } }
 
 .nav-header li {
   position: relative;
@@ -1278,27 +1275,22 @@ textarea {
 
 .nav-footer-logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem; }
   .nav-footer-logo img {
     display: block;
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     border: 2px solid #fff; }
   .nav-footer-logo .nav-footer-author-name {
-    margin: 20px 0 10px 0;
+    margin-left: 1rem;
     font-size: 2em;
     font-weight: 300;
     color: #fff;
     font-family: "Lucida Grande", "Microsoft YaHei", sans-serif; }
-  .nav-footer-logo .nav-footer-job-title {
-    margin: 0;
-    font-size: 1.1em;
-    font-weight: 300;
-    color: #AAAAAA; }
 
 .nav-footer-nav {
   list-style: none;
@@ -1332,21 +1324,27 @@ textarea {
     width: 1.2rem;
     height: 1.2rem; }
 
-.nav-footer-copyrights {
+.nav-footer-copyrights,
+.nav-footer-pv {
   display: block;
+  margin-bottom: 0.4rem;
   width: 100%;
   color: #909499; }
   @media (prefers-color-scheme: dark) {
-    .nav-footer-copyrights {
+    .nav-footer-copyrights,
+    .nav-footer-pv {
       color: #c1bdbd; } }
-  .nav-footer-copyrights p {
+  .nav-footer-copyrights p,
+  .nav-footer-pv p {
     margin: 0; }
-  .nav-footer-copyrights a {
+  .nav-footer-copyrights a,
+  .nav-footer-pv a {
     color: #909499;
     text-decoration: none;
     font-weight: 500; }
     @media (prefers-color-scheme: dark) {
-      .nav-footer-copyrights a {
+      .nav-footer-copyrights a,
+      .nav-footer-pv a {
         color: #c1bdbd; } }
 
 /* ==========================================================================
@@ -1712,3 +1710,37 @@ textarea {
     @media (prefers-color-scheme: dark) {
       .paged .extra-pagination .pagination-box {
         border-color: #3b3d40; } }
+
+/* ==========================================================================
+   Archive
+   ========================================================================== */
+.archive-area {
+  padding: 1.5rem 0 1rem 14rem;
+  border-bottom: 1px solid #3e3e3e;
+  overflow: hidden; }
+  .archive-area .archive-item-title {
+    font-family: monospace;
+    font-size: 2rem;
+    margin: 0.6rem 0 0 -14rem;
+    float: left; }
+  .archive-area ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.4rem;
+    line-height: 2rem; }
+  .archive-area .archive-item-post {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; }
+  .archive-area time {
+    display: block;
+    margin-right: 1.2rem;
+    font-family: monospace;
+    color: #999; }
+  .archive-area a {
+    display: block;
+    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
+    text-decoration: none;
+    color: #fff; }

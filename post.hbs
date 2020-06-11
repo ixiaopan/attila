@@ -6,7 +6,9 @@
   <div class="post-header">
     <h1 class="post-title">{{{title}}}</h1>
     <div class="post-meta">
-      <time datetime="{{date format='DD-MM-YYYY'}}">{{date format="DD MMM YYYY"}}</time> &bull; {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}
+      <time datetime="{{date format='DD-MM-YYYY'}}">{{date format="DD MMM YYYY"}}</time> &bull; 
+      {{reading_time minute=(t "1 min read") minutes=(t "% min read")}} &bull; 
+      Hot <span id="busuanzi_value_page_pv"></span>
     </div>
   </div>
 
@@ -16,14 +18,17 @@
 
   <section class="post-footer">
     {{#if tags}}
-    <aside class="post-tags">
-      {{tags separator=" "}}
-    </aside>
-    {{/if}}
+    <div class="post-tags">
+      {{#foreach tags}}
+       <a href="{{url}}"># {{name}}</a>
+      {{/foreach}}
+    </div>
+    {{/if}}     
 
     <div class="post-share">
       <span class="post-info-label">{{t "Share"}}</span>
 
+      {{!-- TODO: --}}
       <a title="SinaWeibo" class="sinaweibo" href="https://service.weibo.com/share/share.php?url={{url absolute="true"}}?ref=weibo&amp;title={{title}}" target="_blank">
         <svg class="symbol-icon symbol-icon-weibo" aria-hidden="true">
           <use xlink:href="#sinaweibo"></use>
@@ -31,6 +36,7 @@
         <span class="hidden">Weibo</span>
       </a>
 
+      {{!-- TODO: --}}
       <a title="WeChat" class="wechat" onclick="return false;">
         <svg class="symbol-icon symbol-icon-wechat" aria-hidden="true">
           <use xlink:href="#wechat"></use>
@@ -51,13 +57,13 @@
 
   <aside class="post-nav">
     {{#next_post}}
-      <a class="post-nav-next" href="{{url}}">
+      <a class="post-nav-next" href="{{url}}" title="{{t "Next post"}}">
         <i class="icon icon-arrow-left" aria-label="{{t "Next post"}}"></i>
         <h2 class="post-nav-title">{{title}}</h2>
       </a>
     {{/next_post}}
     {{#prev_post}}
-      <a class="post-nav-prev" href="{{url}}">
+      <a class="post-nav-prev" href="{{url}}" title="{{t "Next post"}}">
         <h2 class="post-nav-title">{{title}}</h2>
         <i class="icon icon-arrow-right" aria-label="{{t "Previous post"}}"></i>
       </a>

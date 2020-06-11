@@ -1,5 +1,66 @@
 {{!< default}}
 
-<div class="inner">
-  archive
+<div class="inner" id="archive">
 </div>
+
+{{#contentFor "scripts"}}
+<script src="//cdn.bootcss.com/moment.js/2.14.1/moment.min.js"></script>
+<script src="https://unpkg.com/@tryghost/content-api@1.4.1/umd/content-api.min.js"></script>
+<script>
+  const api = new GhostContentAPI({
+    url: 'http://localhost:2368',
+    key: '14f4f12497bd3f2960b8ad4236',
+    version: 'v3'
+  });
+
+  api.posts
+    .browse({
+      limit: 'all', 
+      fields: 'title,url,published_at',
+      order: 'published_at DESC'
+    })
+    .then((posts) => {
+      let str = '';
+
+      let lastYearMonth = '';
+      posts.forEach((post) => {
+        const { published_at, title, url } = post;
+
+        const time = moment(published_at);
+        let year = time.get('y');
+        let month = time.get('M') + 1;
+        let date = time.get('D');
+
+	  		if (month < 10) month = '0' + month;
+	  		if (date < 10) date = '0' + date;
+
+        let nowYearMonth = year + '-' + month;
+
+        if (lastYearMonth !== nowYearMonth) {
+          if (lastYearMonth) {
+            str += '</ul></div>';
+          }
+
+          str += 
+            `<div class="archive-area">
+              <h3 class="archive-item-title">${nowYearMonth}</h3>
+              <ul>
+                <li class="archive-item-post"><time>${date}</time><a href="${url}">${title}</a></li>
+            `;
+
+          lastYearMonth = nowYearMonth;
+  
+        } else {
+          str += `<li class="archive-item-post"><time>${date}</time><a href="${url}">${title}</a></li>`;
+        }
+      });
+
+      str += '</ul></div>';
+
+      $('#archive').html(str);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+</script>
+{{/contentFor}}
