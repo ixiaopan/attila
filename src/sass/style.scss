@@ -23,7 +23,7 @@ html.menu-active,
 }
 
 body {
-	background: #FFF;
+	background: #F5F5F5;
 	font: 400 1em / 1.5em 'Fira Sans', sans-serif;
 	color: $color-text-primary;
 
@@ -786,13 +786,21 @@ textarea {
     height: 3rem;
     margin: 0 1.2rem; 
     border-radius: 50%;
-    background-color: #0B0D12;
+    background-color: #eee;
 
     text-decoration: none;
     transition: color linear 0.1s;
 
     &:hover .symbol-icon {
-      fill: #FFF;
+      fill: #333;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #0B0D12;
+
+      &:hover .symbol-icon {
+        fill: #FFF;
+      }
     }
   }
 
@@ -1235,7 +1243,11 @@ textarea {
     display: block;
     font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
     text-decoration: none;
-    color: #fff;
+    color: #333;
+
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
 
     &:hover {
       text-decoration: underline;
