@@ -26,19 +26,19 @@
   </section>
 
   <aside class="post-nav">
-    {{#next_post}}
-      <a class="post-nav-next" href="{{url}}" title="{{t "Next post"}}">
-        <i class="icon icon-arrow-left" aria-label="{{t "Next post"}}"></i>
-        <h2 class="post-nav-title">{{title}}</h2>
-      </a>
-    {{/next_post}}
-
     {{#prev_post}}
       <a class="post-nav-prev" href="{{url}}" title="{{t "Next post"}}">
         <h2 class="post-nav-title">{{title}}</h2>
         <i class="icon icon-arrow-right" aria-label="{{t "Previous post"}}"></i>
       </a>
     {{/prev_post}}
+
+    {{#next_post}}
+      <a class="post-nav-next" href="{{url}}" title="{{t "Next post"}}">
+        <i class="icon icon-arrow-left" aria-label="{{t "Next post"}}"></i>
+        <h2 class="post-nav-title">{{title}}</h2>
+      </a>
+    {{/next_post}}
   </aside>
 </div>
 

@@ -425,22 +425,27 @@ textarea {
 .post-content {
 	figure figcaption {
 		position: relative;
-		color: $color-text-secondary;
 		max-width: $inner;
 		margin: auto;
-		font-size: 0.75em;
+    padding: 1rem 0;
+    
+		color: $color-text-secondary;
+    font-size: 0.75em;
 		line-height: 2em;
-		padding: 2rem 0;
+    text-align: center;
 
 		&:after {
 			content: '';
 			position: absolute;
-			left: 0;
+      left: 50%;
 			bottom: 0;
-			width: 8rem;
+      transform: translateX(-50%);
+
+      width: 8rem;
 			height: 1px;
-			background: $color-border;
-			@media (prefers-color-scheme: dark) {
+
+      background: $color-border;
+      @media (prefers-color-scheme: dark) {
 				background: $color-border-dark;
 			}
 		}
@@ -777,6 +782,12 @@ textarea {
   margin: 0 0 4rem 0;
   padding: 0;
 
+  .symbol-icon {
+    width: 50%;
+    height: 50%;
+    fill: #8c8c8c;
+  }
+
   .nav-footer-nav-item {
     display: flex;
     align-items: center;
@@ -786,11 +797,11 @@ textarea {
     height: 3rem;
     margin: 0 1.2rem; 
     border-radius: 50%;
-    background-color: #eee;
 
     text-decoration: none;
-    transition: color linear 0.1s;
+    transition: all ease-in 0.1s;
 
+    background-color: rgb(230, 230, 230);
     &:hover .symbol-icon {
       fill: #333;
     }
@@ -798,16 +809,13 @@ textarea {
     @media (prefers-color-scheme: dark) {
       background-color: #0B0D12;
 
-      &:hover .symbol-icon {
-        fill: #FFF;
+      &:hover {
+        background-color: $color-primary-active;
+        .symbol-icon {
+          fill: #FFF;
+        }
       }
     }
-  }
-
-  .symbol-icon {
-    width: 50%;
-    height: 50%;
-    fill: #8c8c8c;
   }
 
   .nav-footer-nav-rss .symbol-icon {
@@ -821,13 +829,13 @@ textarea {
   margin-bottom: 0.4rem;
   width: 100%;
 
-  color: $color-text-secondary;
-	@media (prefers-color-scheme: dark) {
-		color: #c1bdbd;
-  }
-  
   p {
     margin: 0;
+  }
+
+  color: $color-text-secondary;
+  @media (prefers-color-scheme: dark) {
+		color: #c1bdbd;
   }
 
   a {
@@ -835,6 +843,7 @@ textarea {
     @media (prefers-color-scheme: dark) {
       color: #c1bdbd;
     }
+
     text-decoration: none;
     font-weight: 500;
   }
@@ -846,12 +855,16 @@ textarea {
 .post-list {
 	.post-box {
 		padding: 2.8rem 0;
-		border-bottom: 1px solid $color-border;
 
+    border-bottom: 1px solid $color-border;
     @media (prefers-color-scheme: dark) {
 			border-color: $color-border-dark;
 		}
-	}
+  }
+  
+  .post:last-child .post-box {
+    border-bottom: none;
+  }
   
   .post-title {
     font-size: 2.8rem;
@@ -862,7 +875,7 @@ textarea {
    Post
    ========================================================================== */
 .post-header {
-  margin: 8rem 0;
+  margin: 8rem 0 6rem;
   text-align: center;
 }
 
@@ -873,7 +886,7 @@ textarea {
 	line-height: 1.25em;
 	font-weight: 700;
 	text-indent: -1px;
-  color: #000;
+  color: #333;
 
 	@media (prefers-color-scheme: dark) {
 		color: #FFF;
@@ -961,12 +974,17 @@ textarea {
     line-height: 2rem;
     letter-spacing: .05em;
     text-align: center;
-    color: #cac3c3;
-    background: #171514;
-  
+
     text-decoration: none;
     box-sizing: border-box;
     white-space: nowrap;
+
+
+    background: #242424;
+    color: #cac3c3;
+    &:hover {
+      color: $color-primary-active;
+    }
   }
 }
 
@@ -1051,7 +1069,7 @@ textarea {
   align-items: center;
   justify-content: flex-start;
   
-  color: #000;
+  color: #333;
 	text-decoration: none;
   
   @media (prefers-color-scheme: dark) {
@@ -1061,13 +1079,9 @@ textarea {
   &:focus,
 	&:hover {
 		color: $color-primary-active;
-
-		i {
-			color: $color-primary-active;
-		}
 	}
 }
-.post-nav-prev {
+.post-nav-next {
   margin-left: auto;
   text-align: right;
 }
