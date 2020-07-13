@@ -4,6 +4,7 @@
 @import "normalize";
 @import "colors";
 @import "highlight";
+
 $breakpoint-large: 960px;
 $breakpoint-medium: 640px;
 $breakpoint-small: 480px;
@@ -23,19 +24,14 @@ html.menu-active,
 }
 
 body {
-	background: #F5F5F5;
+  background: $color-background-dark;
+  color: $color-text-primary-dark;
 	font: 400 1em / 1.5em 'Fira Sans', sans-serif;
-	color: $color-text-primary;
 
   text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	overflow-x: hidden;
-
-  @media (prefers-color-scheme: dark) {
-		background: $color-background-dark;
-		color: $color-text-primary-dark;
-	}
 }
 
 button,
@@ -68,10 +64,7 @@ textarea {
 		line-height: 1.25em;
 		margin: 0 0 4rem;
 		text-rendering: optimizeLegibility;
-		color: #000;
-		@media (prefers-color-scheme: dark) {
-			color: #FFF;
-		}
+		color: #fff;
 	}
 
 	h1 {
@@ -173,11 +166,8 @@ textarea {
 		height: 1px;
 		margin: 0 0 4rem;
 		padding: 0;
-		background: $color-border;
 		border: 0;
-		@media (prefers-color-scheme: dark) {
-			background: $color-border-dark;
-		}
+    background: $color-border-dark;
 	}
 
 	blockquote {
@@ -213,9 +203,7 @@ textarea {
 	b,
 	strong {
 		font-weight: 700;
-		@media (prefers-color-scheme: dark) {
-			color: $color-neutral-80;
-		}
+    color: $color-neutral-80;
 	}
 
 	small {
@@ -258,18 +246,15 @@ textarea {
 	code,
 	tt {
 		position: relative;
+		top: -2px;
 		margin: 0 1px;
 		padding: 4px 8px;
-		font-family: monospace, sans-serif;
+		border: 1px solid $color-border-dark;
+    background: $color-background-dark;
+   
+    font-family: monospace, sans-serif;
 		font-size: 0.75em;
-		background: $color-background;
-		border: 1px solid $color-border;
-		top: -2px;
 		white-space: pre-wrap;
-		@media (prefers-color-scheme: dark) {
-			background: $color-background-dark;
-			border-color: $color-border-dark;
-		}
 	}
 
 	pre {
@@ -277,15 +262,13 @@ textarea {
 		margin: 0 0 4rem;
 		padding: 1em;
 		overflow: hidden;
-		font-family: monospace, sans-serif;
-		white-space: pre;
-		background: $color-background;
-		border: 1px solid $color-border;
+    
+    background: $color-background-dark;
+		border: 1px solid $color-border-dark;
 		box-sizing: border-box;
-		@media (prefers-color-scheme: dark) {
-			background: $color-background-dark;
-			border-color: $color-border-dark;
-		}
+
+    font-family: monospace, sans-serif;
+		white-space: pre;
 	}
 
 	pre .lines {
@@ -295,19 +278,18 @@ textarea {
 		left: 0;
 		top: 0;
 		padding: 1.33334em 0;
-		border-right: 1px solid $color-border;
-		color: $color-text-secondary;
+
+    border-right: 1px solid $color-border-dark;
+		box-sizing: border-box;
+		background: $color-background-dark;
+
+    color: $color-text-secondary;
 		font-size: 0.75em;
 		line-height: 2em;
 		text-align: right;
-		box-sizing: border-box;
-		background: $color-background;
-		user-select: none;
+
+    user-select: none;
 		-webkit-user-select: none;
-		@media (prefers-color-scheme: dark) {
-			background: $color-background-dark;
-			border-color: $color-border-dark;
-		}
 	}
 
 	pre .lines .line {
@@ -339,17 +321,15 @@ textarea {
 		display: inline-block;
 		margin-bottom: 0.5em;
 		padding: 1px 8px;
-		border: $color-border 1px solid;
-		text-shadow: #FFF 0 1px 0;
-		font-size: 0.9em;
-		font-weight: bold;
-		background: $color-background;
+    
+    border: $color-border-dark 1px solid;
+    background: $color-background-dark;
 		border-radius: 4px;
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #FFF inset;
-		@media (prefers-color-scheme: dark) {
-			background: $color-background-dark;
-			border-color: $color-border-dark;
-		}
+
+    text-shadow: #FFF 0 1px 0;
+		font-size: 0.9em;
+		font-weight: bold;
 	}
 
 	table {
@@ -357,23 +337,18 @@ textarea {
 		width: 100%;
 		max-width: 100%;
 		margin: 0 0 4rem;
-		border: 1px solid $color-border;
-		background: $color-background;
-		@media (prefers-color-scheme: dark) {
-			border-color: $color-border-dark;
-			background: $color-background-dark;
-		}
+
+    border: 1px solid $color-border-dark;
+    background: $color-background-dark;
 
 		td,
 		th {
 			position: relative;
 			padding: 1.5rem;
-			font-size: 0.75em;
+      border: 1px solid $color-border-dark;
+
+      font-size: 0.75em;
 			line-height: 1.33334em;
-			border: 1px solid $color-border;
-			@media (prefers-color-scheme: dark) {
-				border-color: $color-border-dark;
-			}
 		}
 
 		th {
@@ -444,24 +419,15 @@ textarea {
       width: 8rem;
 			height: 1px;
 
-      background: $color-border;
-      @media (prefers-color-scheme: dark) {
-				background: $color-border-dark;
-			}
+      background: $color-border-dark;
 		}
 
 		a {
-			box-shadow: inset 0 -1px 0 $color-border;
-			@media (prefers-color-scheme: dark) {
-				box-shadow: inset 0 -1px 0 $color-border-dark;
-			}
+      box-shadow: inset 0 -1px 0 $color-border-dark;
 
 			&:focus,
 			&:hover {
-				box-shadow: inset 0 -2px 0 $color-border;
-				@media (prefers-color-scheme: dark) {
-					box-shadow: inset 0 -2px 0 $color-border-dark;
-				}
+        box-shadow: inset 0 -2px 0 $color-border-dark;
 			}
 		}
 	}
@@ -551,14 +517,11 @@ textarea {
 		display: flex;
 		text-decoration: none;
 		min-height: 8em;
-		background: $color-background;
-		border: 1px solid $color-border;
+		border: 1px solid $color-border-dark;
 		box-shadow: none !important;
+    background: $color-background-dark;
 		overflow: hidden;
-		@media (prefers-color-scheme: dark) {
-			background: $color-background-dark;
-			border-color: $color-border-dark;
-		}
+    border-color: $color-border-dark;
 	}
 
 	.kg-bookmark-content {
@@ -569,21 +532,15 @@ textarea {
 		align-items: flex-start;
 		justify-content: start;
 		padding: 1.5em;
-		color: $color-text-secondary;
-		@media (prefers-color-scheme: dark) {
-			color: $color-text-secondary-dark;
-		}
+		color: $color-text-secondary-dark;
 	}
 
 	.kg-bookmark-title {
-		color: $color-text-primary;
 		font-size: 0.75em;
 		line-height: 1.66667em;
 		font-weight: 700;
 		letter-spacing: 0.5px;
-		@media (prefers-color-scheme: dark) {
-			color: $color-text-primary-dark;
-		}
+    color: $color-text-primary-dark;
 	}
 
 	.kg-bookmark-description {
@@ -614,18 +571,16 @@ textarea {
 	}
 
 	.kg-bookmark-metadata {
-		text-rendering: optimizeLegibility;
+    flex-wrap: wrap;
 		display: flex;
 		align-items: center;
-		font-size: 0.75em;
+    margin-top: 1em;
+
+    font-size: 0.75em;
 		line-height: 1.66667em;
-		color: $color-text-primary;
 		font-weight: 400;
-		margin-top: 1em;
-		flex-wrap: wrap;
-		@media (prefers-color-scheme: dark) {
-			color: $color-text-primary-dark;
-		}
+    color: $color-text-primary-dark;
+		text-rendering: optimizeLegibility;
 	}
 
 	.kg-bookmark-icon {
@@ -702,14 +657,10 @@ textarea {
 
   .site-author-name {
     margin: 0;
+    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
     font-size: 2em;
     font-weight: 300;
-    color: #000;
-    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
-
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-    }
+    color: #fff;
   }
 }
 
@@ -724,17 +675,6 @@ textarea {
 .nav-header li {
 	margin-right: 3rem;
 
-	&.active {
-		a {
-			color: $color-neutral-25;
-			font-weight: 500;
-  
-      @media (prefers-color-scheme: dark) {
-				color: $color-neutral-90;
-			}
-		}
-  }
-  
   a {
 		display: block;
 		padding: 1rem 0;
@@ -742,7 +682,8 @@ textarea {
     font-size: 1.5em;
 		line-height: 2rem;
 		font-weight: 400;
-		color: $color-neutral-60;
+    color: $color-neutral-60;
+    font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
 
     white-space: nowrap;
 		text-overflow: ellipsis;
@@ -753,16 +694,16 @@ textarea {
 
 		&:focus,
 		&:hover {
-			color: $color-neutral-25;
-			@media (prefers-color-scheme: dark) {
-				color: $color-neutral-90;
-			}
+			color: #fff;
 		}
-	}
-
-	&:last-child {
-		margin-right: 0;
-	}
+  }
+  
+  &.active {
+		a {
+			color: #fff;
+			font-weight: 500;
+		}
+  }
 }
 
 /* ==========================================================================
@@ -801,19 +742,12 @@ textarea {
     text-decoration: none;
     transition: all ease-in 0.1s;
 
-    background-color: rgb(230, 230, 230);
-    &:hover .symbol-icon {
-      fill: #333;
-    }
+    background-color: #0B0D12;
 
-    @media (prefers-color-scheme: dark) {
-      background-color: #0B0D12;
-
-      &:hover {
-        background-color: $color-primary-active;
-        .symbol-icon {
-          fill: #FFF;
-        }
+    &:hover {
+      background-color: $color-primary-active;
+      .symbol-icon {
+        fill: #FFF;
       }
     }
   }
@@ -833,17 +767,10 @@ textarea {
     margin: 0;
   }
 
-  color: $color-text-secondary;
-  @media (prefers-color-scheme: dark) {
-		color: #c1bdbd;
-  }
+  color: #c1bdbd;
 
   a {
-    color: $color-text-secondary;
-    @media (prefers-color-scheme: dark) {
-      color: #c1bdbd;
-    }
-
+    color: #c1bdbd;
     text-decoration: none;
     font-weight: 500;
   }
@@ -855,14 +782,10 @@ textarea {
 .post-list {
 	.post-box {
 		padding: 2.8rem 0;
-
-    border-bottom: 1px solid $color-border;
-    @media (prefers-color-scheme: dark) {
-			border-color: $color-border-dark;
-		}
+    border-bottom: 1px solid $color-border-dark;
   }
   
-  .post:last-child .post-box {
+  .post:last-of-type .post-box {
     border-bottom: none;
   }
   
@@ -886,11 +809,7 @@ textarea {
 	line-height: 1.25em;
 	font-weight: 700;
 	text-indent: -1px;
-  color: #333;
-
-	@media (prefers-color-scheme: dark) {
-		color: #FFF;
-	}
+  color: #fff;
 
 	a {
 		text-decoration: none;
@@ -902,11 +821,7 @@ textarea {
 .post-meta {
 	font-size: 1.2rem;
 	line-height: 2rem;
-  color: $color-text-secondary;
-
-	@media (prefers-color-scheme: dark) {
-		color: $color-text-secondary-dark;
-	}
+  color: $color-text-secondary-dark;
 
 	a {
 		display: inline-block;
@@ -995,20 +910,13 @@ textarea {
 	position: relative;
 	padding: 4rem;
 	text-align: center;
-	border-top: 1px solid $color-border;
-	border-bottom: 1px solid $color-border;
+	border-top: 1px solid $color-border-dark;
+	border-bottom: 1px solid $color-border-dark;
 	box-sizing: border-box;
-	@media (prefers-color-scheme: dark) {
-		border-color: $color-border-dark;
-	}
 
 	&.activated {
-		background: $color-background;
-		border: 1px solid $color-border;
-		@media (prefers-color-scheme: dark) {
-			background: $color-background-dark;
-			border-color: $color-border-dark;
-		}
+		border: 1px solid $color-border-dark;
+    background: $color-background-dark;
 	}
 }
 
@@ -1017,19 +925,17 @@ textarea {
 	height: 4rem;
 	margin: 2rem 0;
 	padding: 0 2rem;
-	border: 1px solid $color-neutral-80;
-	font-weight: 500;
+	border: 1px solid $color-neutral-60;
+	border-radius: 2em;
+
+  font-weight: 500;
 	font-size: 1.5em;
 	line-height: 4rem;
-	color: $color-neutral-60;
+	color: $color-neutral-80;
 	text-align: center;
-	cursor: pointer;
+
+  cursor: pointer;
 	transition: all ease 0.2s;
-	border-radius: 2em;
-	@media (prefers-color-scheme: dark) {
-		border-color: $color-neutral-60;
-		color: $color-neutral-80;
-	}
 
 	&:focus,
 	&:hover {
@@ -1052,11 +958,7 @@ textarea {
   align-items: center;
   
   padding-top: 1rem;
-  border-top: 1px solid $color-border;
-
-	@media (prefers-color-scheme: dark) {
-		border-color: $color-border-dark;
-	}
+  border-top: 1px solid $color-border-dark;
 }
 
 .post-nav-next,
@@ -1069,13 +971,9 @@ textarea {
   align-items: center;
   justify-content: flex-start;
   
-  color: #333;
+  color: #fff;
 	text-decoration: none;
   
-  @media (prefers-color-scheme: dark) {
-		color: #FFF;
-  }
-
   &:focus,
 	&:hover {
 		color: $color-primary-active;
@@ -1129,20 +1027,18 @@ textarea {
 	margin: -1px 0;
 	padding: 0 2rem;
 	z-index: 100;
-	border: 1px solid $color-neutral-80;
-	font-size: 1.5em;
+	border: 1px solid $color-neutral-60;
+	border-radius: 4rem;
+	box-sizing: border-box;
+
+  font-size: 1.5em;
 	line-height: 4rem;
 	font-weight: 500;
 	text-align: center;
 	text-decoration: none;
-	color: $color-neutral-60;
-	transition: all ease 0.2s;
-	border-radius: 4rem;
-	box-sizing: border-box;
-	@media (prefers-color-scheme: dark) {
-		border-color: $color-neutral-60;
-		color: $color-neutral-80;
-	}
+	color: $color-neutral-80;
+
+  transition: all ease 0.2s;
 
 	&:focus,
 	&:hover {
@@ -1207,10 +1103,7 @@ textarea {
 	display: block;
 
 	.pagination-box {
-		border-bottom: 1px solid $color-border;
-		@media (prefers-color-scheme: dark) {
-			border-color: $color-border-dark;
-		}
+		border-bottom: 1px solid $color-border-dark;
 	}
 }
 
@@ -1257,11 +1150,7 @@ textarea {
     display: block;
     font-family: "Lucida Grande", "Microsoft YaHei", sans-serif;
     text-decoration: none;
-    color: #333;
-
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-    }
+    color: #fff;
 
     &:hover {
       text-decoration: underline;

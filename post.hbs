@@ -1,7 +1,11 @@
 {{!< default}}
 
-{{#post}}
+{{!-- {{#contentFor "styles"}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism-tomorrow.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/toolbar/prism-toolbar.min.css" />
+{{/contentFor}} --}}
 
+{{#post}}
 <div class="inner">
   <div class="post-header">
     <h1 class="post-title">{{{title}}}</h1>
@@ -27,7 +31,7 @@
 
   <aside class="post-nav">
     {{#prev_post}}
-      <a class="post-nav-prev" href="{{url}}" title="{{t "Next post"}}">
+      <a class="post-nav-prev" href="{{url}}" title="{{t "Previous post"}}">
         <h2 class="post-nav-title">{{title}}</h2>
         <i class="icon icon-arrow-right" aria-label="{{t "Previous post"}}"></i>
       </a>
@@ -41,5 +45,10 @@
     {{/next_post}}
   </aside>
 </div>
-
 {{/post}}
+
+{{!-- {{#contentFor "scripts"}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/prism.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+{{/contentFor}} --}}

@@ -1,15 +1,13 @@
 {{!< default}}
 
-<div class="inner" id="archive">
-</div>
+<div class="inner" id="archive"></div>
 
 {{#contentFor "scripts"}}
-<script src="//cdn.bootcss.com/moment.js/2.14.1/moment.min.js"></script>
 <script src="https://unpkg.com/@tryghost/content-api@1.4.1/umd/content-api.min.js"></script>
 <script>
   const api = new GhostContentAPI({
-    url: 'http://localhost:2368',
-    key: '14f4f12497bd3f2960b8ad4236',
+    url: 'http://xiaopan.today',
+    key: '984f5033e271e58c95ac75a940',
     version: 'v3'
   });
 
@@ -26,10 +24,10 @@
       posts.forEach((post) => {
         const { published_at, title, url } = post;
 
-        const time = moment(published_at);
-        let year = time.get('y');
-        let month = time.get('M') + 1;
-        let date = time.get('D');
+        const time = new Date(published_at);
+        let year = time.getFullYear();
+        let month = time.getMonth() + 1;
+        let date = time.getDate();
 
 	  		if (month < 10) month = '0' + month;
 	  		if (date < 10) date = '0' + date;
@@ -57,7 +55,7 @@
 
       str += '</ul></div>';
 
-      $('#archive').html(str);
+      document.querySelector('#archive').innerHTML = str;
     })
     .catch((err) => {
       console.error(err);
